@@ -13,7 +13,34 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Circle()
+                .frame(width: 100)
+                .foregroundColor(.green)
+            Button {
+                print("Pressed")
+            } label: {
+                ZStack{
+                    Capsule()
+                        .stroke(lineWidth: 5)
+                    Text("This is a button")
+                        .foregroundColor(.black)
+                }
+                .frame(width:200, height: 60)
+            }
+            
+            Text("Hello, tukorea!")
+                .font(.largeTitle)
+                .foregroundColor(.purple)
+            HStack {
+                Image(systemName: "folder.badge.plus")
+                    .font(.largeTitle)
+                    .foregroundColor(.red)
+                Text("WoW")
+            }
+            .padding()
+            .background(Color.cyan)
+            .padding()
+            .background(Color.orange)
         }
         .padding()
     }
