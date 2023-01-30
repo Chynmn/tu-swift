@@ -7,12 +7,24 @@
 
 import SwiftUI
 
+// 이미지 수정 구조체
+struct ImageModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(.red)
+            .padding()
+            .background(Color.yellow)
+    }
+}
+
 struct ContentView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
+                .modifier(ImageModifier())
+            Image(systemName: "trash.circle")
+                .modifier(ImageModifier())
             Circle()
                 .frame(width: 100)
                 .foregroundColor(.green)
