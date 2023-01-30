@@ -27,6 +27,7 @@ struct ContentView: View {
     ]
     @State var count = 0    // count의 값이 바뀌면 State property가 view를 다시 그려준다.
     @State var imgIndex = 0
+    @State var transparency = 0.0
     var body: some View {
         VStack {
             Image(systemName: ContentView.names[imgIndex])
@@ -36,6 +37,8 @@ struct ContentView: View {
             Circle()
                 .frame(width: 100)
                 .foregroundColor(.green)
+            Slider(value: $transparency)    // 데이터가 사용자로부터 in & out 되므로
+            Text("\(transparency)")         // Slider를 움직일 때 데이터가 새로 저장된다.
             
             Button {
                 print("Pressed")    // MVVM패턴이 SwiftUI에서 대세인 추세 Storyboard에서는 MVC패턴 사용
