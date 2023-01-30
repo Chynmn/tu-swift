@@ -19,10 +19,17 @@ struct ImageModifier: ViewModifier {
 }
 
 struct ContentView: View {
+    static let names = [
+        "pencil.circle.fill",
+        "folder.circle",
+        "paperplane.circle.fill",
+        "xmark.bin.fill",
+    ]
     @State var count = 0    // count의 값이 바뀌면 State property가 view를 다시 그려준다.
+    @State var imgIndex = 0
     var body: some View {
         VStack {
-            Image(systemName: "globe")
+            Image(systemName: ContentView.names[imgIndex])
                 .modifier(ImageModifier())
             Image(systemName: "trash.circle")
                 .modifier(ImageModifier())
@@ -33,6 +40,7 @@ struct ContentView: View {
             Button {
                 print("Pressed")    // MVVM패턴이 SwiftUI에서 대세인 추세 Storyboard에서는 MVC패턴 사용
                 count += 1
+                imgIndex = (imgIndex + 1) % ContentView.names.count
             } label: {
                 ZStack{
                     Capsule()
