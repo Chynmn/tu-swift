@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-//struct ImageModifier: ViewModifier {
-//    func body(content: Content) -> some View {
-//        (content as! Image)
-//            .resizable()    //  이미지가 짤리지 않도록 함
-//            .frame(width: 250, height: 200)
-//    }
-//}
-
 struct ContentView: View {
     static let names = [
         "kym1",
@@ -73,3 +65,29 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+struct TopButton: View {
+    var imageName: String
+    var enables: Bool
+    var action: ()->Void
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            Image(systemName: imageName)
+                .resizable()
+                .frame(width: 80, height: 80)
+            
+        }
+        .disabled(!enables)
+    }
+}
+
+struct TopButton_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            TopButton(imageName: "arrow.left", enables: true, action: {})
+            TopButton(imageName: "arrow.right", enables: false, action: {})
+        }
+    }
+}    
